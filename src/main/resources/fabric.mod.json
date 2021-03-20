@@ -3,7 +3,7 @@
   "id": "aafk",
   "version": "${version}",
   "name": "Aafk",
-  "description": "AFK check bypasser.",
+  "description": "AFK check bypasser.\n https://github.com/n643064/Fabric-AntiAFK",
   "authors": [
     "n6430"
   ],
