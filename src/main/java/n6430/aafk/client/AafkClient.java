@@ -9,6 +9,6 @@ import net.fabricmc.api.Environment;
 public class AafkClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        AntiAfk.init();
+        AntiAfk.register();
     }
 }

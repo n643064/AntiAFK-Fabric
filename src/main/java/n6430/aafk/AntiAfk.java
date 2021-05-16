@@ -18,7 +18,8 @@ public class AntiAfk {
     public static int r;
 
 
-    public static void init() {
+    public static void register()
+    {
 
         AKey = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                 "key.aafk.t",
@@ -28,8 +29,10 @@ public class AntiAfk {
         ));
 
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            if (client.player != null) {
-                if (AKey.wasPressed()) {
+            if (client.player != null)
+            {
+                if (AKey.wasPressed())
+                {
                     AAFK = !AAFK;
                     if (AAFK) {
                         client.player.sendMessage(Text.of("AntiAFK - ON"), true);
@@ -42,22 +45,20 @@ public class AntiAfk {
                         client.options.keySneak.setPressed(false);
                     }
                 }
-                if (AAFK) {
+                if (AAFK)
+                {
                     client.options.keyRight.setPressed(false);
                     client.options.keyLeft.setPressed(false);
                     client.options.keyForward.setPressed(false);
                     client.options.keyBack.setPressed(false);
-                    r = random.nextInt(99);
                     client.player.setSprinting(random.nextBoolean());
                     client.options.keySneak.setPressed(random.nextBoolean());
-                    if (r < 25) {
-                        client.options.keyRight.setPressed(true);
-                    } else if (r > 24 && r < 50) {
-                        client.options.keyLeft.setPressed(true);
-                    } else if (r > 49 && r < 75) {
-                        client.options.keyForward.setPressed(true);
-                    } else if (r > 74 && r < 100) {
-                        client.options.keyBack.setPressed(true);
+                    r = random.nextInt(3);
+                    switch (r) {
+                        case 0: client.options.keyRight.setPressed(true); break;
+                        case 1: client.options.keyLeft.setPressed(true); break;
+                        case 2: client.options.keyBack.setPressed(true); break;
+                        case 3: client.options.keyForward.setPressed(true); break;
                     }
                 }
 
